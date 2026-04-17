@@ -69,7 +69,7 @@
 
         </form>
 
-        <p class="signup-prompt">Don’t have an account?</p>
+        <p class="signup-prompt">Don’t have a account?</p>
         <a href="signup.jsp" class="btn-signup">SIGN UP</a>
 
     </div>
