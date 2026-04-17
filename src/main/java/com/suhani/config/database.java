@@ -2,7 +2,7 @@ package com.suhani.config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class database {
+    public class database {
 	private static final String DB_NAME = "AI4";
 	private static final String URL = "jdbc:mysql://127.0.0.1:3306/"+DB_NAME;
     private static final String USER = "root";
