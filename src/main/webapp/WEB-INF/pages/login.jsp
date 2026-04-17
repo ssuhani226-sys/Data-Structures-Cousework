@@ -2,80 +2,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
-
-        .login-container {
-            width: 320px;
-            margin: 100px auto;
-            padding: 25px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .error {
-            color: red;
-            text-align: center;
-        }
-    </style>
+    <title>Wear & Share - Login</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
 </head>
 
 <body>
 
-<div class="login-container">
-    <h2>Login</h2>
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+    <div class="header-logo">
+        WEAR & SHARE
+    </div>
 
-    <!-- Show error message if any -->
-    <%
-        String error = (String) request.getAttribute("error");
-        if (error != null) {
-    %>
-        <p class="error"><%= error %></p>
-    <%
-        }
-    %>
+    <div class="header-title">
+        <h1>WEAR & SHARE</h1>
+        <p>SHARE • STYLE • SUSTAIN</p>
+    </div>
+</header>
 
-    <form action="LoginServlet" method="post">
-        <label>Username</label>
-        <input type="text" name="username" required>
+<!-- ================= MAIN CONTENT ================= -->
+<div class="main-content">
 
-        <label>Password</label>
-        <input type="password" name="password" required>
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
 
-        <input type="submit" value="Login">
-    </form>
+        <div class="brand-image-placeholder">
+            <span>BRAND IMAGE</span>
+        </div>
+
+        <div class="tagline-box">
+            FASHION THAT CONNECTS PEOPLE
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CENTER COLUMN (LOGIN FORM) -->
+    <div class="col-center">
+
+        <h2>LOGIN</h2>
+
+        <!-- ERROR MESSAGE -->
+        <%
+            String error = (String) request.getAttribute("error");
+            if (error != null) {
+        %>
+            <div class="error-msg"><%= error %></div>
+        <%
+            }
+        %>
+
+        <form action="LoginServlet" method="post">
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter username" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="btn-login">LOGIN</button>
+
+        </form>
+
+        <p class="signup-prompt">Don’t have an account?</p>
+        <a href="signup.jsp" class="btn-signup">SIGN UP</a>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+
+        <img src="images/fashion.jpg" class="fashion-img" alt="Fashion Image">
+
+        <!-- fallback placeholder -->
+        <div class="img-placeholder">
+            IMAGE NOT FOUND
+        </div>
+
+    </div>
+
 </div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+    © 2026 Wear & Share | All Rights Reserved
+</footer>
 
 </body>
 </html>
