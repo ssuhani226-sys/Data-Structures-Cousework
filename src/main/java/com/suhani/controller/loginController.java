@@ -4,11 +4,10 @@ import java.io.IOException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.WebServlet;
-
 import com.suhani.model.userservice;
 
 @WebServlet("/login")
-public class loginControllerjava extends HttpServlet {
+public class loginController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,9 +23,12 @@ public class loginControllerjava extends HttpServlet {
         userservice us = new userservice();
 
         if (us.checkLogin(email, password)) {
-        	request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", email);
+            response.sendRedirect("dashboard");
         } else {
-        	request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response);
+            request.setAttribute("error", "Invalid Email or Password");
+            request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response);
         }
     }
 }
